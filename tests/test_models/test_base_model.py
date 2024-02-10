@@ -56,3 +56,19 @@ class TestBaseModel(TestCase):
         class_name = base_m1.__class__.__name__
         comp_s = f"[{class_name}] ({base_m1.id}) {base_m1.__dict__}"
         self.assertEqual(comp_s, str(base_m1))
+
+    def test_kwargs(self):
+        """Tests initialization of BaseModel object using **kwargs"""
+        base_m1 = BaseModel()
+        m1_dict = base_m1.to_dict()
+        base_m2 = BaseModel(**m1_dict)
+        self.assertFalse(base_m1 is base_m2)
+        self.assertTrue(hasattr(base_m2, 'id'))
+        self.assertIsInstance(base_m2.id, str)
+        self.assertTrue(hasattr(base_m2, 'created_at'))
+        self.assertIsInstance(base_m2.created_at, datetime)
+        self.assertTrue(hasattr(base_m2, 'updated_at'))
+        self.assertIsInstance(base_m2.updated_at, datetime)
+        base_m3 = BaseModel(__class__="SomeRandomName")
+        self.assertNotEqual(base_m3.__class__.__name__, "SomeRandomName")
+        self.assertEqual(base_m3.__class__.__name__, "BaseModel")
