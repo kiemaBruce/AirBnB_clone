@@ -24,9 +24,9 @@ class BaseModel:
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
             # storage.new(self)
-        dict_key = "BaseModel.{self.id}"
-        if dict_key not in storage.all():
-            storage.new(self)
+            dict_key = "BaseModel.{self.id}"
+            if dict_key not in storage.all():
+                storage.new(self)
 
     def save(self):
         """Updates updated_at with current datetime"""
