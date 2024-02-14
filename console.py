@@ -153,10 +153,10 @@ class HBNBCommand(cmd.Cmd):
         attributes: id, created_at, updated_at are never updated with this
         method.
         """
-        strs_list = line.split(" ")
-        if len(strs_list) == 0:
+        if not line:
             print("** class name missing **")
         else:
+            strs_list = line.split(" ")
             if strs_list[0] != "BaseModel":
                 print("** class doesn't exist **")
             else:
