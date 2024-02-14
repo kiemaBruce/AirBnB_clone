@@ -58,4 +58,4 @@ class FileStorage:
                             base_model.BaseModel(**value)
                     elif "User" in key:
                         import models.user as user
-                        FileStorage.__objects[key] = user.User()
+                        FileStorage.__objects[key] = user.User(**value)
