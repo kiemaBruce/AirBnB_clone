@@ -54,13 +54,16 @@ class FileStorage:
     def save(self):
         """Serializes __objects to the JSON file."""
         with open(FileStorage.__file_path, mode="w", encoding="utf-8") as my_f:
+            c = 0
             for key, value in self.__class__.__objects.items():
                 # if not FileStorage.check_duplicates(key):
-                if len(self.__class__.__objects) > 1:
+                # if len(self.__class__.__objects) > 1:
+                if c > 0:
                     my_f.write("\n")
                 obj_dict = {}
                 obj_dict = {key: value.to_dict()}
                 json.dump(obj_dict, my_f)
+                c += 1
 
     def reload(self):
         """Deserializes the JSON file to __objects if the file exists"""
