@@ -52,6 +52,10 @@ class FileStorage:
                         print(f"Error while parsing JSON: {e}")
             for stored_dict in stored_dicts:
                 for key, value in stored_dict.items():
-                    import models.base_model as base_model
-                    self.__class__.__objects[key] = \
-                        base_model.BaseModel(**value)
+                    if "BaseModel" in key:
+                        import models.base_model as base_model
+                        self.__class__.__objects[key] = \
+                            base_model.BaseModel(**value)
+                    elif "User" in key:
+                        import models.user as user
+                        FileStorage.__objects[key] = user.User()

@@ -26,7 +26,7 @@ class BaseModel:
             self.updated_at = current_time
             # storage.new(self)
         dict_key = f"{self.__class__.__name__}.{self.id}"
-        #dict_key = "BaseModel.{self.id}"
+        # dict_key = "BaseModel.{self.id}"
         if dict_key not in storage.all():
             storage.new(self)
 
