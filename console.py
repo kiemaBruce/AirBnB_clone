@@ -7,6 +7,7 @@ import models.base_model as base_model
 import cmd
 import json
 from models import storage
+import models.user as user
 
 
 class HBNBCommand(cmd.Cmd):
@@ -31,14 +32,17 @@ class HBNBCommand(cmd.Cmd):
         if len(line) == 0:
             print("** class name missing **")
         else:
-            classes = ["BaseModel", "User"]
-            if line not in classes:
+            classes_list = ["BaseModel", "User"]
+            if line not in classes_list:
                 print("** class doesn't exist **")
-            else:
-                if line == "BaseModel":
-                    bm1 = base_model.BaseModel()
-                    bm1.save()
-                    print(bm1.id)
+            elif line == "BaseModel":
+                bm1 = base_model.BaseModel()
+                bm1.save()
+                print(bm1.id)
+            elif line == "User":
+                user1 = user.User()
+                user1.save()
+                print(user1.id)
 
     def do_show(self, line):
         """Prints string representation of instance.
@@ -50,7 +54,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             split_str = line.split(sep=" ")
-            if split_str[0] != "BaseModel":
+            classes_list = ["BaseModel", "User"]
+            if split_str[0] not in classes_list:
                 print("** class doesn't exist **")
             else:
                 if len(split_str) < 2:
@@ -68,7 +73,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             split_str = line.split(sep=" ")
-            if split_str[0] != "BaseModel":
+            classes_list = ["BaseModel", "User"]
+            if split_str[0] not in classes_list:
                 print("** class doesn't exist **")
             else:
                 if len(split_str) < 2:
@@ -108,7 +114,15 @@ class HBNBCommand(cmd.Cmd):
         if line:
             if line == "BaseModel":
                 all_list = []
-                for key in storage.all():
+                base_model_keys = \
+                    (key for key in storage.all() if "BaseModel" in key)
+                for key in base_model_keys:
+                    all_list.append(f"{storage.all()[key]}")
+                c = 1
+            elif line == "User":
+                all_list = []
+                user_keys = (key for key in storage.all() if "User" in key)
+                for key in user_keys:
                     all_list.append(f"{storage.all()[key]}")
                 c = 1
             else:
@@ -157,7 +171,8 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             strs_list = line.split(" ")
-            if strs_list[0] != "BaseModel":
+            classes_list = ["BaseModel", "User"]
+            if strs_list[0] not in classes_list:
                 print("** class doesn't exist **")
             else:
                 if len(strs_list) == 1:
@@ -179,13 +194,15 @@ class HBNBCommand(cmd.Cmd):
                                                       "updated_at"
                                                   ]
                                 current_obj = storage.all()[s_key]
-                                rem_quotes = \
+                                clean_attr = \
+                                    HBNBCommand.strip_quotes(strs_list[2])
+                                cln_value = \
                                     HBNBCommand.strip_quotes(strs_list[3])
                                 if strs_list[2] not in forbidden_attrs:
                                     setattr(
                                         current_obj,
-                                        strs_list[2],
-                                        rem_quotes
+                                        clean_attr,
+                                        cln_value
                                     )
                                     current_obj.save()
 
