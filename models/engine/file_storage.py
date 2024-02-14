@@ -49,18 +49,18 @@ class FileStorage:
         """Sets in __objects the obj with key <obj class name>.id"""
         key = f"{obj.__class__.__name__}.{obj.id}"
         self.__class__.__objects[key] = obj
-#        print("New object")
+        # print("New object")
 
     def save(self):
         """Serializes __objects to the JSON file."""
-        with open(FileStorage.__file_path, mode="a", encoding="utf-8") as my_f:
+        with open(FileStorage.__file_path, mode="w", encoding="utf-8") as my_f:
             for key, value in self.__class__.__objects.items():
-                if not FileStorage.check_duplicates(key):
-                    if len(self.__class__.__objects) > 1:
-                        my_f.write("\n")
-                    obj_dict = {}
-                    obj_dict = {key: value.to_dict()}
-                    json.dump(obj_dict, my_f)
+                # if not FileStorage.check_duplicates(key):
+                if len(self.__class__.__objects) > 1:
+                    my_f.write("\n")
+                obj_dict = {}
+                obj_dict = {key: value.to_dict()}
+                json.dump(obj_dict, my_f)
 
     def reload(self):
         """Deserializes the JSON file to __objects if the file exists"""
