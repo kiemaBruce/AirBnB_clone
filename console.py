@@ -27,16 +27,18 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_create(self, line):
-        """Creates a new instance of BaseModel, saves it and prints the id"""
+        """Creates a new instance, saves it and prints the id"""
         if len(line) == 0:
             print("** class name missing **")
         else:
-            if line != "BaseModel":
+            classes = ["BaseModel", "User"]
+            if line not in classes:
                 print("** class doesn't exist **")
             else:
-                bm1 = base_model.BaseModel()
-                bm1.save()
-                print(bm1.id)
+                if line == "BaseModel":
+                    bm1 = base_model.BaseModel()
+                    bm1.save()
+                    print(bm1.id)
 
     def do_show(self, line):
         """Prints string representation of instance.
@@ -156,30 +158,36 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             if strs_list[0] != "BaseModel":
-                print("** class name missing **")
-            if len(strs_list) == 1:
-                print("** instance id missing **")
+                print("** class doesn't exist **")
             else:
-                s_key = f"{strs_list[0]}.{strs_list[1]}"
-                if s_key not in storage.all():
-                    print("** no instance found **")
+                if len(strs_list) == 1:
+                    print("** instance id missing **")
                 else:
-                    if len(strs_list) == 2:
-                        print("** attribute name missing **")
+                    s_key = f"{strs_list[0]}.{strs_list[1]}"
+                    if s_key not in storage.all():
+                        print("** no instance found **")
                     else:
-                        if len(strs_list) == 3:
-                            print("** value missing **")
+                        if len(strs_list) == 2:
+                            print("** attribute name missing **")
                         else:
-                            forbidden_attrs = [
-                                                  "id",
-                                                  "created_at",
-                                                  "updated_at"
-                                              ]
-                            current_obj = storage.all()[s_key]
-                            rem_quotes = HBNBCommand.strip_quotes(strs_list[3])
-                            if strs_list[2] not in forbidden_attrs:
-                                setattr(current_obj, strs_list[2], rem_quotes)
-                                current_obj.save()
+                            if len(strs_list) == 3:
+                                print("** value missing **")
+                            else:
+                                forbidden_attrs = [
+                                                      "id",
+                                                      "created_at",
+                                                      "updated_at"
+                                                  ]
+                                current_obj = storage.all()[s_key]
+                                rem_quotes = \
+                                    HBNBCommand.strip_quotes(strs_list[3])
+                                if strs_list[2] not in forbidden_attrs:
+                                    setattr(
+                                        current_obj,
+                                        strs_list[2],
+                                        rem_quotes
+                                    )
+                                    current_obj.save()
 
     def emptyline(self):
         """Does nothing for empty line + enter"""
