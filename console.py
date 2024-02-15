@@ -3,9 +3,15 @@
 """
 
 
+import models.amenity as amenity
 import models.base_model as base_model
+import models.city as city
 import cmd
 import json
+import models.place as place
+import re
+import models.review as review
+import models.state as state
 from models import storage
 import models.user as user
 
@@ -32,7 +38,10 @@ class HBNBCommand(cmd.Cmd):
         if len(line) == 0:
             print("** class name missing **")
         else:
-            classes_list = ["BaseModel", "User"]
+            classes_list = ["BaseModel", "User", "Place",
+                            "State", "City", "Amenity",
+                            "Review"
+                            ]
             if line not in classes_list:
                 print("** class doesn't exist **")
             elif line == "BaseModel":
@@ -43,6 +52,26 @@ class HBNBCommand(cmd.Cmd):
                 user1 = user.User()
                 user1.save()
                 print(user1.id)
+            elif line == "Place":
+                place1 = place.Place()
+                place1.save()
+                print(place1.id)
+            elif line == "State":
+                state1 = state.State()
+                state1.save()
+                print(state1.id)
+            elif line == "City":
+                city1 = city.City()
+                city1.save()
+                print(city1.id)
+            elif line == "Amenity":
+                amty1 = amenity.Amenity()
+                amty1.save()
+                print(amty1.id)
+            elif line == "Review":
+                review1 = review.Review()
+                review1.save()
+                print(review1.id)
 
     def do_show(self, line):
         """Prints string representation of instance.
@@ -54,7 +83,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             split_str = line.split(sep=" ")
-            classes_list = ["BaseModel", "User"]
+            classes_list = ["BaseModel", "User", "Place",
+                            "State", "City", "Amenity",
+                            "Review"
+                            ]
             if split_str[0] not in classes_list:
                 print("** class doesn't exist **")
             else:
@@ -73,7 +105,10 @@ class HBNBCommand(cmd.Cmd):
             print("** class name missing **")
         else:
             split_str = line.split(sep=" ")
-            classes_list = ["BaseModel", "User"]
+            classes_list = ["BaseModel", "User", "Place",
+                            "State", "City", "Amenity",
+                            "Review"
+                            ]
             if split_str[0] not in classes_list:
                 print("** class doesn't exist **")
             else:
@@ -125,6 +160,36 @@ class HBNBCommand(cmd.Cmd):
                 for key in user_keys:
                     all_list.append(f"{storage.all()[key]}")
                 c = 1
+            elif line == "Place":
+                all_list = []
+                place_keys = (key for key in storage.all() if "Place" in key)
+                for key in place_keys:
+                    all_list.append(f"{storage.all()[key]}")
+                c = 1
+            elif line == "State":
+                all_list = []
+                state_keys = (key for key in storage.all() if "State" in key)
+                for key in state_keys:
+                    all_list.append(f"{storage.all()[key]}")
+                c = 1
+            elif line == "City":
+                all_list = []
+                city_keys = (key for key in storage.all() if "City" in key)
+                for key in city_keys:
+                    all_list.append(f"{storage.all()[key]}")
+                c = 1
+            elif line == "Amenity":
+                all_list = []
+                amty_keys = (key for key in storage.all() if "Amenity" in key)
+                for key in amty_keys:
+                    all_list.append(f"{storage.all()[key]}")
+                c = 1
+            elif line == "Review":
+                all_list = []
+                review_keys = (key for key in storage.all() if "Review" in key)
+                for key in review_keys:
+                    all_list.append(f"{storage.all()[key]}")
+                c = 1
             else:
                 print("** class doesn't exist **")
         else:
@@ -170,8 +235,17 @@ class HBNBCommand(cmd.Cmd):
         if not line:
             print("** class name missing **")
         else:
-            strs_list = line.split(" ")
-            classes_list = ["BaseModel", "User"]
+            pattern = r'(?:"([^"]+)"|(\S+))(?=\s+|$)'
+            p_args_tuple_list = re.findall(pattern, line)
+            strs_list = []
+            for tup in p_args_tuple_list:
+                for item in tup:
+                    if item:
+                        strs_list.append(item)
+            classes_list = ["BaseModel", "User", "Place",
+                            "State", "City", "Amenity",
+                            "Review"
+                            ]
             if strs_list[0] not in classes_list:
                 print("** class doesn't exist **")
             else:
