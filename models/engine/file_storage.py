@@ -59,3 +59,18 @@ class FileStorage:
                     elif "User" in key:
                         import models.user as user
                         FileStorage.__objects[key] = user.User(**value)
+                    elif "Place" in key:
+                        import models.place as place
+                        FileStorage.__objects[key] = place.Place(**value)
+                    elif "State" in key:
+                        import models.state as state
+                        FileStorage.__objects[key] = state.State(**value)
+                    elif "City" in key:
+                        import models.city as city
+                        FileStorage.__objects[key] = city.City(**value)
+                    elif "Amenity" in key:
+                        import models.amenity as amenity
+                        FileStorage.__objects[key] = amenity.Amenity(**value)
+                    elif "Review" in key:
+                        import models.review as review
+                        FileStorage.__objects[key] = review.Review(**value)
