@@ -2,7 +2,10 @@
 """Contains definition of State class."""
 
 
-class State(BaseModel):
+import models.base_model as base_model
+
+
+class State(base_model.BaseModel):
     """Attributes and methods of State clsss
 
     Attributes:

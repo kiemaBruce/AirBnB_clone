@@ -2,6 +2,9 @@
 """Contains definition of Place class"""
 
 
+from models.base_model import BaseModel
+
+
 class Place(BaseModel):
     """Attributes and methods of Place class
 

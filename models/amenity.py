@@ -2,6 +2,9 @@
 """Contains Amenity class"""
 
 
+from models.base_model import BaseModel
+
+
 class Amenity(BaseModel):
     """Attributes and methods of Amenity class.
 

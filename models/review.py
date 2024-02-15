@@ -2,6 +2,9 @@
 """Contains definition of Review class"""
 
 
+from models.base_model import BaseModel
+
+
 class Review(BaseModel):
     """Attributes and methods of Review class
 
