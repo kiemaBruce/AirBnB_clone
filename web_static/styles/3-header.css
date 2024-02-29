@@ -1,0 +1,21 @@
+header {
+    box-sizing: border-box;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+}
+.logo {
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    margin: 0;
+    position: relative;
+    left: 20px;
+    top: 5px;
+    bottom: 5px;
+    background-image: url("images/icon.png");
+    /*
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-position: 20px 10px;*/
+}
