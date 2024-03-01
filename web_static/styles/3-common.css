@@ -47,6 +47,9 @@ table {
     border-spacing: 0;
 }
 /*End of css reset*/
+html {
+    box-sizing: border-box;
+}
 body {
     margin: 0;
     padding: 0;
