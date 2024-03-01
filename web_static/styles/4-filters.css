@@ -18,8 +18,7 @@
     right: 30px;
     top: 50%;
     transform: translateY(-50%);
-    cursor: pointer;
 }
 .search_botton:hover {
-    opacity: 40%;
+    opacity: 90%;
 }
