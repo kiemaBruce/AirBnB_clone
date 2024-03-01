@@ -47,25 +47,20 @@ table {
     border-spacing: 0;
 }
 /*End of CSS reset.*/
-html {
-    box-sizing: border-box;
-}
 header {
+    box-sizing: border-box;
     height: 70px;
     width: 100%;
     border-bottom: 1px solid #CCCCCC;
-    background-color: white;
 }
 .logo {
+    box-sizing: border-box;
     width: 142px;
     height: 60px;
-    position: absolute;
+    position: relative;
     left: 20px;
-    top: 5px;
-    bottom: 5px;
-    margin-top: 0;
-    /*top: calc(50% - (60px / 2));*/ /* Or simply 5px */
-    /*bottom: calc(50% - (60px / 2));*/ /* Or simply 5px */
+    top: calc(50% - (60px / 2)); /* Or simply 5px */
+    bottom: calc(50% - (60px / 2)); /* Or simply 5px */
     background-image: url("../images/logo.png");
     background-size: auto;
     background-repeat: no-repeat;

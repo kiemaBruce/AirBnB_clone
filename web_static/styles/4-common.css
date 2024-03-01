@@ -46,27 +46,24 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
-/*End of CSS reset.*/
-html {
-    box-sizing: border-box;
+/*End of css reset*/
+body {
+    margin: 0;
+    padding: 0;
+    color: #484848;
+    font-family: Circular,"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-header {
+.container {
+    max-width: 1000px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.filters {
+    background-color: white;
     height: 70px;
     width: 100%;
-    border-bottom: 1px solid #CCCCCC;
-    background-color: white;
-}
-.logo {
-    width: 142px;
-    height: 60px;
-    position: absolute;
-    left: 20px;
-    top: 5px;
-    bottom: 5px;
-    margin-top: 0;
-    /*top: calc(50% - (60px / 2));*/ /* Or simply 5px */
-    /*bottom: calc(50% - (60px / 2));*/ /* Or simply 5px */
-    background-image: url("../images/logo.png");
-    background-size: auto;
-    background-repeat: no-repeat;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
 }
