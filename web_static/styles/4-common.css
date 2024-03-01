@@ -60,10 +60,3 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
-.filters {
-    background-color: white;
-    height: 70px;
-    width: 100%;
-    border: 1px solid #DDDDDD;
-    border-radius: 4px;
-}
