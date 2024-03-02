@@ -72,7 +72,7 @@
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     background-color: #FAFAFA;
-    left: -0.5px;/*had to adjust the list left by a bit so that it's borders align with those of the element above it.*/
+    left: -0.6px;/*had to adjust the list left by a bit so that it's borders align with those of the element above it.*/
 }
 .locations:hover .popover {
     display: block;
