@@ -1,0 +1,83 @@
+.filters {
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    position: relative;
+}
+.search_button {
+    font-size: 18px;
+    background-color: #FF5A5F;
+    color: #FFFFFF;
+    height: 48px;
+    width: 20%;
+    border: 0;
+    border-radius: 4px;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.search_button:hover {
+    opacity: 90%;
+}
+.locations {
+    height: 100%;
+    width: 25%;
+    border-right: 1px solid #DDDDDD;
+    display: inline-block;
+    position: relative;
+}
+.locations_wrapper_outer {
+    display: flex;
+    justify-content: center; /* Horizontally center child elements */
+    align-items: center; /* Center vertically */
+    height: 100%;
+    width: 100%;
+}
+.states_title {
+    font-weight: 600;
+}
+.states_content {
+    font-weight: 400;
+    font-size: 14px;
+}
+.amenities {
+    height: 100%;
+    width: 25%;
+    display: inline-block;
+    position: absolute;
+    /*left: 0;*/
+}
+.amenities_wrapper_outer {
+    display: flex;
+    justify-content: center; /* Horizontally center child elements */
+    align-items: center; /* Center vertically */
+    height: 100%;
+    width: 100%;
+}
+.amenities_title {
+    font-weight: 600;
+}
+.amenities_content {
+    font-weight: 400;
+    font-size: 14px;
+}
+.popover {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+    background-color: #FAFAFA;
+    left: -1px;/*had to adjust the list left by a bit so that it's borders align with those of the element above it.*/
+}
+.locations:hover .popover {
+    display: block;
+}
+.popover h2 {
+    font-size: 16px;
+    font-weight: 600;
+}
