@@ -28,29 +28,22 @@
     opacity: 90%;
 }
 .locations {
-    box-sizing: border-box;
     height: 100%;
     width: 25%;
-    margin: 0;
-    padding: 0;
     /*border-right: 1px solid #DDDDDD;*/
     display: inline-block;
     position: relative;
 }
 .locations_wrapper_outer {
-    box-sizing: border-box;
     display: flex;
     justify-content: center; /* Horizontally center child elements */
     align-items: center; /* Center vertically */
     height: 100%;
     width: 100%;
-    padding: 0;
-    margin: 0;
     border-right: 1px solid #DDDDDD;
 }
 .states_title {
     font-weight: 600;
-    box-sizing: border-box;
 }
 .states_content {
     font-weight: 400;
@@ -62,7 +55,6 @@
     display: inline-block;
     position: absolute;
     /*border-left: 1px solid #DDDDDD;*/
-    margin: 0;
     /*left: 0;*/
 }
 .amenities_wrapper_outer {
@@ -80,15 +72,14 @@
     font-size: 14px;
 }
 .popover {
-    /*display: none;*/
-    box-sizing: border-box;
+    display: none;
     position: absolute;
     width: 100%;
     height: auto;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
     background-color: #FAFAFA;
-    padding-left: 6px;
+    padding-left: 15px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -98,4 +89,13 @@
 .popover h2 {
     font-size: 16px;
     font-weight: 600;
+}
+.popover .top_list {
+    margin-bottom: 20px;
+}
+.amenities:hover .popover {
+    display: block;
+}
+.amenities .popover {
+    padding-left: 20px;
 }
