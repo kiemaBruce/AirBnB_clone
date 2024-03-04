@@ -54,6 +54,7 @@
     width: 25%;
     display: inline-block;
     position: absolute;
+    padding: 0;
     /*border-left: 1px solid #DDDDDD;*/
     /*left: 0;*/
 }
